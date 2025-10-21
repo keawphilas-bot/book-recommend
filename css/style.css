@@ -1,0 +1,226 @@
+.type {
+    text-indent: 2em;
+}
+
+.font {
+    color: aliceblue;
+}
+
+
+
+/* เริ่มจากโปร่งใส */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards; /* 2 วินาทีค่อยๆปรากฏ */
+}
+
+/* กำหนด keyframes ของการ fade in */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+.star {
+    position: absolute;
+    /* ให้วางตำแหน่งอิสระ */
+    width: 2px;
+    height: 2px;
+    background: white;
+    /* ดาวเป็นสีขาว */
+    border-radius: 50%;
+    /* ทำให้เป็นวงกลม */
+    opacity: 0.8;
+    /* ความโปร่งใส */
+    animation: twinkle 2s infinite ease-in-out;
+    /* ใช้ animation ด้านล่าง */
+    z-index: 0;
+    /* 👈 ดาวอยู่ชั้นล่างสุด */
+}
+
+/* การกระพริบของดาว (ระยิบระยับ) */
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+body {
+    background: linear-gradient(to bottom, #241e2c, #473a8b, #666cbf, #4d88c0, #8abbeb);
+    position: relative; /* เพื่อให้จัดลำดับ z-index ได้ */
+    overflow-x: hidden;
+}
+
+.container, header, img, h2, .accordion {
+  position: relative;
+  z-index: 10; /* 👈 เนื้อหาอยู่เหนือดาว */
+}
+
+
+
+.accordion-button {
+    background-color: #473a8b;
+    /* สีปุ่ม */
+    color: aliceblue;
+    /* สีตัวอักษร */
+    font-weight: 600;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #666cbf;
+    /* สีตอนกดเปิด */
+    color: #fff;
+}
+
+.accordion-button::after {
+    filter: brightness(0) invert(1);
+    /* เปลี่ยนลูกศรเป็นสีขาว */
+}
+
+.accordion-body {
+    background-color: rgba(23, 15, 34, 0.7);
+    /* สีพื้นในเนื้อหา โปร่งใสนิดๆ */
+    color: #eaeaff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* ลบขอบและเงาทั้งหมด */
+.accordion-item,
+.accordion-button,
+.accordion-button:focus,
+.accordion-button:not(.collapsed),
+.accordion-button:focus-visible {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ป้องกันขอบสีขาวตอนกด */
+.accordion-button:focus {
+  border-color: transparent !important;
+}
+
+/* ลบเส้นแบ่งใน accordion */
+.accordion-item {
+  background-color: transparent;
+}
+
+
+
+header {
+    background: linear-gradient(to right, #241e2c, #473a8b);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+    background: transparent;
+    /* ให้ header เป็นตัวกำหนดสี */
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.nav-link {
+    color: aliceblue !important;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #8abbeb !important;
+    /* สีฟ้าอ่อนเวลาชี้ */
+    transform: scale(1.05);
+}
+
+.navbar-toggler {
+    background-color: #666cbf;
+}
+
+[data-aos] {
+    transition-timing-function: ease-in-out;
+}
+
+
+
+/* carousel image */
+.zoom-item {
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: scale(0.8);
+    opacity: 0.5;
+    position: relative; /* ให้ปุ่มอยู่เหนือ */
+    z-index: 1; /* ต่ำกว่าปุ่ม */
+}
+
+/* active image */
+.carousel-item.active .zoom-item {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ปุ่มควบคุม */
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 2; /* ให้ปุ่มอยู่เหนือภาพ */
+}
+
+
+/* ให้รูปติดมุมบนขวาของหน้าจอและหมุน */
+.fixed-moon {
+    position: fixed;      /* ติดหน้าจอ */
+    bottom: 1%;            /* ระยะจากด้านบน */
+    right: 1%;          /* ติดมุมบนขวา */
+    width: 20%;          /* ขนาดรูป ปรับได้ */
+    z-index: 10000;       /* อยู่เหนือทุกองค์ประกอบ */
+    animation: spin 100s linear infinite; /* หมุนรูป */
+}
+
+/* สร้างอนิเมชันหมุน */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.bottom-right-cat {
+    position: fixed;      /* ติดหน้าจอ */
+    bottom: 0;            /* ชิดขอบล่าง */
+    right: 0;             /* ชิดขอบขวา */
+    width: 20%;          /* ขนาดใหญ่ ปรับตามหน้าจอ */
+    max-width: 250px;     /* จำกัดขนาดสูงสุด */
+    height: auto;         /* รักษาอัตราส่วน */
+    z-index: 1000;        /* อยู่เหนือเนื้อหา */
+    /*animation: float 4s ease-in-out infinite alternate; /* ลอยเล็กน้อย */
+}
+
+/* อนิเมชันลอยขึ้นลง */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-15px); }
+}
+
+
+
+
