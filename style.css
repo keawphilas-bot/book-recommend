@@ -1,0 +1,280 @@
+.type {
+    text-indent: 2em;
+}
+
+.font {
+    color: aliceblue;
+}
+
+
+
+/* กำหนด keyframes ของการ fade in */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+.star {
+    position: absolute;
+    /* ให้วางตำแหน่งอิสระ */
+    width: 2px;
+    height: 2px;
+    background: white;
+    /* ดาวเป็นสีขาว */
+    border-radius: 50%;
+    /* ทำให้เป็นวงกลม */
+    opacity: 0.8;
+    /* ความโปร่งใส */
+    animation: twinkle 2s infinite ease-in-out;
+    /* ใช้ animation ด้านล่าง */
+    z-index: 0;
+    /* 👈 ดาวอยู่ชั้นล่างสุด */
+}
+
+/* การกระพริบของดาว (ระยิบระยับ) */
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+body.index {
+    background: linear-gradient(to bottom, #241e2c, #473a8b, #666cbf, #4d88c0, #8abbeb);
+    position: relative;
+    /* เพื่อให้จัดลำดับ z-index ได้ */
+    overflow-x: hidden;
+}
+body.catneung {
+    background: linear-gradient(to bottom, #241e2c, #473a8b, #4d88c0, #8abbeb, #666cbf);
+    position: relative;
+    /* เพื่อให้จัดลำดับ z-index ได้ */
+    overflow-x: hidden;
+}
+body.catsong {
+    background: linear-gradient(to bottom, #192692, #2c4b82, #526d9d, #d4b67a, #ff9328);
+    position: relative;
+    /* เพื่อให้จัดลำดับ z-index ได้ */
+    overflow-x: hidden;
+}
+body.catsam {
+    background: linear-gradient(to bottom, #2e2a50, #404281, #e7acbd, #f6c0a9, #8c9feb);
+    position: relative;
+    /* เพื่อให้จัดลำดับ z-index ได้ */
+    overflow-x: hidden;
+}
+body.catsee {
+    background: linear-gradient(to bottom, #32245b, #30255d, #a84c98, #6274b6, #424fa0);
+    position: relative;
+    /* เพื่อให้จัดลำดับ z-index ได้ */
+    overflow-x: hidden;
+}
+
+.container,
+header,
+img,
+h2,
+.accordion {
+    position: relative;
+    z-index: 10;
+    /* 👈 เนื้อหาอยู่เหนือดาว */
+}
+
+
+
+.accordion-button {
+    background-color: #473a8b;
+    /* สีปุ่ม */
+    color: aliceblue;
+    /* สีตัวอักษร */
+    font-weight: 600;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #666cbf;
+    /* สีตอนกดเปิด */
+    color: #fff;
+}
+
+.accordion-button::after {
+    filter: brightness(0) invert(1);
+    /* เปลี่ยนลูกศรเป็นสีขาว */
+}
+
+.accordion-body {
+    background-color: rgba(23, 15, 34, 0.7);
+    /* สีพื้นในเนื้อหา โปร่งใสนิดๆ */
+    color: #eaeaff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* ลบขอบและเงาทั้งหมด */
+.accordion-item,
+.accordion-button,
+.accordion-button:focus,
+.accordion-button:not(.collapsed),
+.accordion-button:focus-visible {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* ป้องกันขอบสีขาวตอนกด */
+.accordion-button:focus {
+    border-color: transparent !important;
+}
+
+/* ลบเส้นแบ่งใน accordion */
+.accordion-item {
+    background-color: transparent;
+}
+
+
+
+header {
+    background: linear-gradient(to right, #241e2c, #473a8b);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+    background: transparent;
+    /* ให้ header เป็นตัวกำหนดสี */
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.nav-link {
+    color: aliceblue !important;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #8abbeb !important;
+    /* สีฟ้าอ่อนเวลาชี้ */
+    transform: scale(1.05);
+}
+
+.navbar-toggler {
+    background-color: #666cbf;
+}
+
+[data-aos] {
+    transition-timing-function: ease-in-out;
+}
+
+
+
+/* carousel image */
+.zoom-item {
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: scale(0.8);
+    opacity: 0.5;
+    position: relative;
+    /* ให้ปุ่มอยู่เหนือ */
+    z-index: 1;
+    /* ต่ำกว่าปุ่ม */
+}
+
+/* active image */
+.carousel-item.active .zoom-item {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ปุ่มควบคุม */
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 2;
+    /* ให้ปุ่มอยู่เหนือภาพ */
+}
+
+
+
+
+/* carousel container */
+.carousel-container {
+  position: relative;
+  width: 80%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item { 
+  opacity: 0.7;   /* รูปข้างๆ ไม่ซีดมาก */
+  transform: scale(0.8); 
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.carousel-item.active { 
+  opacity: 1;     /* รูปหลักสดชัด */
+  transform: scale(1);  /* ขนาดเท่ากัน ไม่ต้องขยาย */
+}
+
+.carousel-item.prev,
+.carousel-item.next {
+  opacity: 0.8;   /* รูปข้างๆ สดชัดขึ้น */
+  transform: scale(0.8);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+
+
+.text-box {
+  background-color: rgba(92, 144, 212, 0.6);
+  /* สีขาวโปร่งมาก */
+  border-radius: 15px;
+  /* ขอบมน */
+  padding: 20px 30px;
+  /* เว้นระยะขอบด้านใน */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* เงานิดๆ ให้เด่นขึ้น */
+}
+
+h1,h2 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

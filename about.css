@@ -1,0 +1,109 @@
+.font {
+  color: aliceblue;
+}
+
+.star {
+  position: absolute;
+  /* ให้วางตำแหน่งอิสระ */
+  width: 2px;
+  height: 2px;
+  background: white;
+  /* ดาวเป็นสีขาว */
+  border-radius: 50%;
+  /* ทำให้เป็นวงกลม */
+  opacity: 0.8;
+  /* ความโปร่งใส */
+  animation: twinkle 2s infinite ease-in-out;
+  /* ใช้ animation ด้านล่าง */
+}
+
+/* การกระพริบของดาว (ระยิบระยับ) */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+body {
+  background: linear-gradient(to bottom, #241e2c, #473a8b, #666cbf, #4d88c0, #8abbeb);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.8);
+  /* เริ่มเล็กลง */
+  animation: zoomIn 1.5s forwards;
+  /* 1.5 วินาที */
+}
+
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+    /* ขยายมาขนาดปกติ */
+  }
+}
+
+
+
+.bottom-left-zoom {
+  position: fixed;
+  /* ติด viewport */
+  left: 0;
+  /* ชิดซ้าย */
+  bottom: 0;
+  /* ชิดล่าง */
+  width: 30%;
+  /* ขนาดใหญ่ ปรับได้ */
+  height: auto;
+  /* รักษาสัดส่วน */
+  object-fit: cover;
+  /* ครอบเต็มพื้นที่ width */
+  z-index: 1000;
+  /* อยู่เหนือเนื้อหาอื่น */
+}
+
+
+
+.text-box {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* สีขาวโปร่งมาก */
+  border-radius: 15px;
+  /* ขอบมน */
+  padding: 20px 30px;
+  /* เว้นระยะขอบด้านใน */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* เงานิดๆ ให้เด่นขึ้น */
+}
+
+
+h1,h2 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.credits {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-align: right;
+  z-index: 1000;
+  /* น้อยกว่ารูป */
+  background-color: rgba(255, 255, 255, 0.1); /* ใส่พื้นหลังโปร่งนิดหน่อย */
+  color: #000000;
+}
