@@ -47,7 +47,7 @@
     }
 }
 
-body.catfirst {
+body.index {
     background: linear-gradient(to bottom, #241e2c, #473a8b, #666cbf, #4d88c0, #8abbeb);
     position: relative;
     /* เพื่อให้จัดลำดับ z-index ได้ */
