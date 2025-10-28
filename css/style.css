@@ -281,6 +281,17 @@ header {
   /* เงานิดๆ ให้เด่นขึ้น */
 }
 
-h1,h2 {
+h1,h2,h3 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.box {
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-align: right;
+  z-index: 1000;
+  /* น้อยกว่ารูป */
+  background-color: rgba(255, 255, 255, 0.1); /* ใส่พื้นหลังโปร่งนิดหน่อย */
+  color: #000000;
 }
